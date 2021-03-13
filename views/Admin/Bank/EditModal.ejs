@@ -1,0 +1,37 @@
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>    
+        <form action="/admin/bank?_method=PUT" method="POST" enctype="multipart/form-data" >
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="name_bank">Name Bank</label>
+              <input required name="name_bank" type="text" class="form-control name_bank" id="name_bank" placeholder="Enter Name Bank">
+            </div>
+            <div class="form-group">
+              <label for="nomor_rekening">Nomor Rekening</label>
+              <input required name="nomor_rekening" type="number" class="form-control nomor_rekening" id="nomor_rekening" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input required name="name" type="text" class="form-control name" id="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input name="image" type="file" class="form-control" id="image">
+            </div>
+          </div>
+        <div class="modal-footer">
+          <input readonly class="form-control id" name="_id" type="hidden">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>

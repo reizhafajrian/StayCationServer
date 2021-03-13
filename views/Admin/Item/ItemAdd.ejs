@@ -1,0 +1,42 @@
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
+        <form action="/admin/item" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input required name="title" type="text" class="form-control" id="title"
+                        placeholder="Enter title name">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input required name="price" type="number" class="form-control" id="price" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input required name="city" type="text" class="form-control" id="city" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" class="form-control" id="category">
+                        <option value="">--Category--</option>
+                        <% category.forEach((element,key)=>{%>
+                            <option value="<%=element._id%>"><%=element.name%></option>
+                        <%})%>
+                       
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input required name="image" type="file" class="form-control" id="image" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea required name="desc" type="text" class="form-control" id="desc"></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">save</button>
+            </div>
+
+   
+        </form>
+    </div>
+</div>
