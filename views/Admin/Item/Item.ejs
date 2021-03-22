@@ -22,6 +22,8 @@
             <div class="container-fluid">
                 <h1><%=alert.message%></h1>
                 <!-- Page Heading -->
+        
+                <% if(action==="view") {%> 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#show-item" role="tab"
@@ -38,9 +40,28 @@
                     </div>
                     <div class="tab-pane fade" id="add-item" role="tabpanel" aria-labelledby="profile-tab">
                         <%- include('./ItemAdd.ejs')%></div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
                 </div>
-
+            <% }else if(action==="showimage") {%> 
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#show-item" role="tab"
+                            aria-controls="home" aria-selected="true">Show Image</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <%- include('./ShowImage.ejs')%>
+                </div>
+            <% }else if(action==="edit"){%>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#show-item" role="tab"
+                            aria-controls="home" aria-selected="true">Edit Item</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <%- include('./EditItem.ejs')%>
+                </div>
+            <% } %> 
             </div>
             <!-- /.container-fluid -->
 

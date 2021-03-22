@@ -159,15 +159,19 @@ module.exports = {
       status: alertStatus,
     };
     try {
-      const item = await Item.find();
+      const item = await Item.find()
+        .populate({ path: "imageId", select: "id imageUrl" })
+        .populate({ path: "categoryId", select: "id name" });
       const category = await Category.find();
       res.render("Admin/Item/Item", {
         title: "StayCation | Item",
         item,
         category,
         alert,
+        action: "view",
       });
     } catch (err) {
+      console.log(err);
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
       res.redirect("/admin/item");
@@ -179,7 +183,7 @@ module.exports = {
       if (req.files.length > 0) {
         const categories = await Category.findOne({ _id: category });
         const newItem = {
-          category: categories._id,
+          categoryId: categories._id,
           title,
           price,
           city,
@@ -217,8 +221,64 @@ module.exports = {
       req.flash("alertMessage", `success delete item`);
       req.flash("alertStatus", "success");
       res.redirect("/admin/item");
-    }catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  editItem: async (req, res) => {
+    const alertMesage = req.flash("alertMessage");
+    const alertStatus = req.flash("alertStatus");
+    const alert = {
+      message: alertMesage,
+      status: alertStatus,
+    };
+    try {
+      const { id } = req.params;
+      const item = await Item.findOne({ _id: id }).populate({
+        path: "imageId",
+        select: "id imageUrl",
+      }).populate({
+        path: "categoryId",
+        select: "id name",
+      });
+
+      const category = await Category.find();
+      res.render("Admin/Item/Item", {
+        title: "StayCation | Edit Item",
+        item,
+        alert,
+        action: "edit",
+        category
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  showImageItem: async (req, res) => {
+    const alertMesage = req.flash("alertMessage");
+    const alertStatus = req.flash("alertStatus");
+    const alert = {
+      message: alertMesage,
+      status: alertStatus,
+    };
+    try {
+      const { id } = req.params;
+      const item = await Item.findOne({ _id: id }).populate({
+        path: "imageId",
+        select: "id imageUrl",
+      });
+      console.log(item);
+      res.render("Admin/Item/Item", {
+        title: "StayCation | Show Image Item",
+        item,
+        alert,
+        action: "showimage",
+      });
+    } catch (err) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/admin/item");
+      console.log(err);
     }
   },
   viewBooking: (req, res) => {

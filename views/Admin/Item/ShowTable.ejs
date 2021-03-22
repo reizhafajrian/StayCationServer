@@ -1,5 +1,5 @@
     <div class="card shadow mb-4">
-      
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -12,31 +12,31 @@
                             <th>city</th>
                             <th>Action</th>
                         </tr>
-                        <tbody>
-                            <% item.forEach((element,key) =>{%>
-                            <tr>
-                                <td><%=key %></td>
-                                <td><%=element.title %></td>
-                                <td><%=element.price %></td>
-                                <td><%=element.country %></td>
-                                <td><%=element.city %></td>
-                                <td>
-                                    <form action="/admin/item/remove/<%= element._id %>?_method=DELETE" method="POST">
-                                    <a href="javascript:void()" type="button"
-                                        class="btn btn-warning btn-circle btn-sm button-update" data-id="<%= element._id %>"
-                                        data-name="<%= element.name %>"><i class="fas fa-edit"></i></a>
-                                    <button type="submit" class="btn btn-danger btn-circle btn-sm btn-delete" data-id="<%= element._id %>"><i class="fas fa-trash"></i></button>
+                    <tbody>
+                        <% item.forEach((element,key) =>{%>
+                        <tr>
+                            <td><%=key %></td>
+                            <td><%=element.title %></td>
+                            <td><%=element.price %></td>
+                            <td><%=element.country %></td>
+                            <td><%=element.city %></td>
+                            <td>
+                                <form action="/admin/item/remove/<%= element._id %>?_method=DELETE" method="POST">
+                                    <a href="/admin/item/show-image/<%= element._id %>" class="btn btn-info btn-circle btn-sm"><i class="fas fa-image"></i></a>
+                                    <a href="/admin/item/edit/<%= element._id %>" type="button"
+                                        class="btn btn-warning btn-circle btn-sm button-update"
+                                        data-id="<%= element._id %>" data-name="<%= element.name %>"><i
+                                            class="fas fa-edit"></i></a>
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm btn-delete"
+                                        data-id="<%= element._id %>"><i class="fas fa-trash"></i></button>
+                                        <a href="" class="btn btn-success btn-circle btn-sm"><i class="fas fa-plus"></i></a>
                                 </form>
-                                </td>
-                            
-                            </tr>
-                            <%})%>
-        
-                        </tbody>
+                            </td>
+                        </tr>
+                        <%})%>
+                    </tbody>
                     </thead>
                 </table>
             </div>
         </div>
     </div>
-
-

@@ -1,0 +1,28 @@
+<!-- <div class="card shadow mb-4">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Image</th>
+
+                    </tr>
+                <tbody>
+            
+                </tbody>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div> -->
+<% (item.imageId).forEach((element,key) =>{%>
+<div class="col md-4">
+    <div class="card shadow mb-4 mt-2">
+        <div class="card-body">
+            <img src="http://localhost:5000/<%=element.imageUrl %>" alt="image" style="width: 100%;">
+        </div>
+    </div>
+</div>
+<%})%>
